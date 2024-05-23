@@ -1,6 +1,6 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
-    const maxButtons = 5;
+    const maxButtons = 5; 
     const half = Math.floor(maxButtons / 2);
     let start = Math.max(currentPage - half, 1);
     let end = Math.min(currentPage + half, totalPages);

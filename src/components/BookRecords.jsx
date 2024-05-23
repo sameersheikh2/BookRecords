@@ -28,32 +28,38 @@ const BookRecords = ({ records }) => {
           <table className="min-w-full border-collapse bg-white table-auto text-center">
             <thead className="bg-gray-200">
               <tr>
-                <th className="py-2 px-4" onClick={() => handleSort("title")}>
+                <th
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
+                  onClick={() => handleSort("title")}
+                >
                   Title
                 </th>
                 <th
-                  className="py-2 px-4"
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
                   onClick={() => handleSort("author_name")}
                 >
                   Author Name
                 </th>
                 <th
-                  className="py-2 px-4"
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
                   onClick={() => handleSort("first_publish_year")}
                 >
                   First Publish Year
                 </th>
-                <th className="py-2 px-4" onClick={() => handleSort("subject")}>
+                <th
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
+                  onClick={() => handleSort("subject")}
+                >
                   Subject
                 </th>
                 <th
-                  className="py-2 px-4"
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
                   onClick={() => handleSort("ratings_average")}
                 >
                   Average Rating
                 </th>
                 <th
-                  className="py-2 px-4"
+                  className="py-2 px-4 hover:cursor-pointer hover:bg-gray-400"
                   onClick={() => handleSort("author_birth_date")}
                 >
                   Author Birth Date
