@@ -28,23 +28,17 @@ const App = () => {
           const fetchDetailedResults = async () => {
             let detailedResults = [];
             for (let book of data.docs) {
-              const authorKey = book.author_key[0];
+              const authorName = book.author_name[0];
               const authorRes = await fetch(
-                `https://openlibrary.org/authors/${authorKey}.json`
+                `https://openlibrary.org/search/authors.json?q=${authorName}`
               );
               const authorData = await authorRes.json();
-
-              const topWork = authorData.name.split(" ").join("%");
-              const topWorkRes = await fetch(
-                `https://openlibrary.org/search.json?author=${topWork}&limit=${limit}`
-              );
-              const topWorkData = await topWorkRes.json();
-              const topWorkTitle = topWorkData.docs[0]?.title || "N/A";
+              const authorInfo = authorData.docs[0];
 
               detailedResults.push({
                 ...book,
-                author_birth_date: authorData.birth_date || "N/A",
-                top_work: topWorkTitle,
+                author_birth_date: authorInfo.birth_date || "N/A",
+                top_work: authorInfo.top_work || "N/A",
               });
             }
             return detailedResults;
@@ -78,6 +72,11 @@ const App = () => {
     setPage(newPage);
   };
 
+  const handleLimitChange = (event) => {
+    setLimit(parseInt(event.target.value, 10));
+    setPage(1); // Reset to the first page when changing the limit
+  };
+
   const totalPages = Math.ceil(totalRecords / limit);
 
   return (
@@ -92,11 +91,7 @@ const App = () => {
         <p className="w-full text-center">Loading...</p>
       ) : (
         <>
-          <select
-            onChange={(e) => setLimit(e.target.value)}
-            name="recordsShowing"
-            id="recordsPerPage"
-          >
+          <select onChange={handleLimitChange} value={limit} name="recordsShowing" id="recordsPerPage">
             <option value="10">10</option>
             <option value="50">50</option>
             <option value="100">100</option>
