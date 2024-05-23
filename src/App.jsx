@@ -74,7 +74,7 @@ const App = () => {
 
   const handleLimitChange = (event) => {
     setLimit(parseInt(event.target.value, 10));
-    setPage(1); // Reset to the first page when changing the limit
+    setPage(1);
   };
 
   const totalPages = Math.ceil(totalRecords / limit);
@@ -91,7 +91,12 @@ const App = () => {
         <p className="w-full text-center">Loading...</p>
       ) : (
         <>
-          <select onChange={handleLimitChange} value={limit} name="recordsShowing" id="recordsPerPage">
+          <select
+            onChange={handleLimitChange}
+            value={limit}
+            name="recordsShowing"
+            id="recordsPerPage"
+          >
             <option value="10">10</option>
             <option value="50">50</option>
             <option value="100">100</option>

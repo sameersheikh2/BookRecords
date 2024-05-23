@@ -1,6 +1,6 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const getPageNumbers = () => {
-    const maxButtons = 5; // Maximum number of buttons to display
+    const maxButtons = 5;
     const half = Math.floor(maxButtons / 2);
     let start = Math.max(currentPage - half, 1);
     let end = Math.min(currentPage + half, totalPages);
@@ -33,7 +33,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pageNumbers[0] > 1 && (
         <>
           <button
-            className={`px-3 py-1 ${currentPage === 1 ? 'font-bold' : ''}`}
+            className={`px-3 py-1 ${currentPage === 1 ? "font-bold" : ""}`}
             onClick={() => onPageChange(1)}
           >
             1
@@ -44,7 +44,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       {pageNumbers.map((number) => (
         <button
           key={number}
-          className={`px-3 py-1 ${currentPage === number ? 'font-bold' : ''}`}
+          className={`px-3 py-1 ${currentPage === number ? "font-bold" : ""}`}
           onClick={() => onPageChange(number)}
         >
           {number}
@@ -56,7 +56,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <span className="px-3 py-1">...</span>
           )}
           <button
-            className={`px-3 py-1 ${currentPage === totalPages ? 'font-bold' : ''}`}
+            className={`px-3 py-1 ${
+              currentPage === totalPages ? "font-bold" : ""
+            }`}
             onClick={() => onPageChange(totalPages)}
           >
             {totalPages}
